@@ -1,0 +1,16 @@
+@(message: String, user:AcelrUser, msg:Option[String])(implicit request: RequestHeader)
+
+@main(title = "Dashboard | ACELR Tech Labs",user = Some(user)) {
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="alert alert-info alert-dismissable"><strong>Welcome,</strong>&nbsp;@user.fullName</div>
+        </div>
+        @msg.map { m =>
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="alert alert-danger alert-dismissable"><strong>Oops!</strong>&nbsp;@Messages(m)</div>
+            </div>
+        }
+    </div>
+</div>
+}

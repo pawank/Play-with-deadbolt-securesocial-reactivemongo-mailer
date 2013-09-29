@@ -1,0 +1,65 @@
+@(signUpForm:Form[securesocial.controllers.Registration.RegistrationInfo], token: String)(implicit request: RequestHeader)
+@import securesocial.core.providers.UsernamePasswordProvider
+@import securesocial.core.IdentityProvider
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(securesocial.views.html.inputFieldConstructor.f) }
+
+@views.html.main( Messages("securesocial.signup.title") ) {
+    <div class="page-header">
+        <h1>@Messages("securesocial.signup.title")</h1>
+    </div>
+
+    @request.flash.get("error").map { msg =>
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="alert alert-danger alert-dismissable"><strong>Oops!</strong>&nbsp;@Messages(msg)</div>
+        </div>
+    }
+
+    <form action="@securesocial.core.providers.utils.RoutesHelper.handleSignUp(token).absoluteURL(IdentityProvider.sslEnabled)"
+          class="form-horizontal"
+          autocomplete= "off"
+          method="POST"
+    >
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+            @if( UsernamePasswordProvider.withUserNameSupport ) {
+                @helper.inputText(
+                    signUpForm("userName"),
+                    '_label -> Messages("securesocial.signup.username"),
+                    'class -> "input-xlarge form-control"
+                )
+            }
+
+            @helper.inputText(
+                signUpForm("firstName"),
+                '_label -> Messages("securesocial.signup.firstName"),
+                'class -> "input-xlarge form-control"
+            )
+
+            @helper.inputText(
+                signUpForm("lastName"),
+                '_label -> Messages("securesocial.signup.lastName"),
+                'class -> "input-xlarge form-control"
+            )
+
+            @helper.inputPassword(
+                signUpForm("password.password1"),
+                '_label -> Messages("securesocial.signup.password1"),
+                'class -> "input-xlarge form-control"
+            )
+
+            @helper.inputPassword(
+                signUpForm("password.password2"),
+                '_label -> Messages("securesocial.signup.password2"),
+                '_error -> signUpForm.error("password"),
+                'class -> "input-xlarge form-control"
+            )
+            </div>
+
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <button type="submit" class="btn btn-primary">@Messages("securesocial.signup.createAccount")</button>
+                <a class="btn" href="@securesocial.core.providers.utils.RoutesHelper.login()">@Messages("securesocial.signup.cancel")</a>
+            </div>
+        </div>
+    </form>
+}

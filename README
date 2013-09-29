@@ -1,0 +1,7 @@
+Play 2.2.0 with Securesocial, Deadbolt-2-scala, Play-reactivemongo, Play-salat, Typesafe emailer, JQuery uploader integrated
+=====================================
+Interface using - Twitter bootstrap 3.0
+SBT settings from http://mikeslinn.blogspot.in/2013/09/sample-play-22x-buildsbt.html
+
+NOTE: Please change the SMTP settings in securesocial.conf and gmail.conf as per your own email setting.
+Also, use your own API keys for respective provider of securesocial.

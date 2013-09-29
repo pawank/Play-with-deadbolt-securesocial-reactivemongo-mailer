@@ -1,0 +1,73 @@
+@(fbForm: Form[models.ContactUs], msg:Map[String,String], auth:be.objectify.deadbolt.scala.DeadboltHandler)(implicit session:play.api.mvc.Session,request: Request[Any],flash: play.api.mvc.Flash)
+
+@import helper._
+@import controllers.routes.javascript._
+
+@import be.objectify.deadbolt.scala.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+@main("Contact Us | ACELR Tech Labs", "contactus") {
+    <div class="page-header acelr-m-top-less-10">
+        <h3 class="acelr-title text-center">Contact Us</h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12 acelr-contactus">
+                @if(fbForm.hasErrors) {
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                    @msg.get("error").map  {a =>
+                        <div class="alert alert-danger alert-dismissable"><strong>Oops!</strong>&nbsp;Please check all missing fields and try again</div>
+                    }
+                         </div>
+                    </div>
+                }
+                @if(!fbForm.hasErrors) {
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                @msg.get("success").map  {a =>
+                    <div class="alert alert-success alert-dismissable">@a</div>
+                }
+                    </div>
+                </div>
+                }
+
+                <!--<form role="form">-->
+                @form(action=routes.Application.saveContactUs,args = 'id -> "contactus_form", 'role -> "form") {
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Your name please" value="@fbForm("fullName").value">
+                            </div>
+                            <div class="input-group form-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your email please" value="@fbForm("email").value">
+                            </div>
+                            <div class="input-group form-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                <input type="phone" class="form-control" id="phone" name="phone" placeholder="Your phone please" value="@fbForm("phone").value">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+                                <textarea rows="6" class="form-control" id="message" name="message" placeholder="Your message to us">@fbForm("message").value</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                        </div>
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-primary btn-block">Send</button>
+                        </div>
+                    </div>
+                <!--</form>-->
+                }
+            </div>
+        </div>
+    </div>
+    <br/>
+}

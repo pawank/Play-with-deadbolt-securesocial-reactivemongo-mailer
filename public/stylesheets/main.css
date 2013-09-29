@@ -1,0 +1,245 @@
+/*Application specific css descriptors */
+
+#editor {overflow:scroll; max-height:300px}
+
+div
+{
+    text-align:justify;
+    text-justify:inter-word;
+}
+
+span.section-title
+{
+    text-align:center;
+}
+img {
+    max-width: 100%;
+    max-height: 140px;
+}
+
+.acelr-extrapad {
+    margin-left: 15px;
+    margin-right: 30px;
+}
+
+.acelr-blog-guest-img {
+    width: 64px;
+    height: 64px;
+    margin-left: 10px;
+}
+
+.acelr-border {
+    border: 1px;
+    border-color: graytext;
+}
+
+.acelr-img-box-left {
+    height: 140px;
+    width: 249px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    background: #FFFFFF;
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.acelr-img-box {
+    height: 140px;
+    width: 249px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    background: #FFFFFF;
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    /*
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    */
+}
+.acelr-img-box-right {
+    text-align: right;
+    height: 140px;
+    width: 249px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    background: #FFFFFF;
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+}
+.acelr-m-top-less-10 {
+    margin-top: -10px;
+}
+.acelr-m-bottom-less-10 {
+    margin-bottom: -10px;
+}
+
+html {
+    /*background-image: url('../images/sample/cloud.png');*/
+    /*background-image: url('../images/sample/nature_wallpaper_hd_hd_nature_1.jpg');*/
+    background-repeat: repeat;
+}
+
+body {
+    background-color: #FFFFFF;
+    /*background-color: #4DD1F2;*/
+}
+
+.acelr-title {
+    color: #204C74;
+}
+
+a.acelr-header-text-color {
+    color: #FF5556;
+}
+
+.acelr-logo-dim {
+    width:100px;
+    height: 40px;
+    padding: -10px;
+    margin: -10px;
+}
+
+.acelrvideo, .acelr-contactus {
+    margin-bottom: 10px;
+    border: 2px;
+    border-color: deepskyblue;
+    background: #FFFFFF;
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.acelr-info {
+    margin-bottom: 10px;
+    border: 1px;
+    border-color: deepskyblue;
+    background: #FFFFFF;
+    padding: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 4px 2px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 4px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: 4px 2px rgba(0, 0, 0, 0.07);
+}
+
+.help-inline {
+    border: 1px;
+    border-color: deepskyblue;
+    background: #FFFFFF;
+    color: indianred;
+    padding: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 2px 2px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 2px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.07);
+}
+
+/*
+ * Callouts
+ *
+ * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Requires a base and modifier class.
+ */
+
+/* Common styles for all types */
+.bs-callout {
+    margin: 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
+}
+.bs-callout h4 {
+    margin-top: 0;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code,
+.bs-callout .highlight {
+    background-color: #fff;
+}
+
+/* Variations */
+.bs-callout-danger {
+    background-color: #fcf2f2;
+    border-color: #dFb5b4;
+}
+.bs-callout-warning {
+    background-color: #fefbed;
+    border-color: #f1e7bc;
+}
+.bs-callout-info {
+    background-color: #f0f7fd;
+    border-color: #d0e3f0;
+}
+
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 10px;
+    }
+}
+
+/* Fix for IE 10 for handing media quries */
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+

@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                              controllers.Application.index
+GET         /contactus                                     controllers.Application.contactus
+POST        /contactus                                     controllers.Application.saveContactUs
+GET         /marketing                                     controllers.Application.marketing
+
+
+#Upload
+POST        /content/upload/all                            controllers.UploadController.uploadFile
+
+# Securesocial plugin routes
+GET         /login                                         securesocial.controllers.LoginPage.login
+GET         /logout                                        securesocial.controllers.LoginPage.logout
+GET         /signup                                        securesocial.controllers.Registration.startSignUp
+POST        /signup                                        securesocial.controllers.Registration.handleStartSignUp
+GET         /signup/:token                                 securesocial.controllers.Registration.signUp(token)
+POST        /signup/:token                                 securesocial.controllers.Registration.handleSignUp(token)
+GET         /reset                                         securesocial.controllers.Registration.startResetPassword
+POST        /reset                                         securesocial.controllers.Registration.handleStartResetPassword
+GET         /reset/:token                                  securesocial.controllers.Registration.resetPassword(token)
+POST        /reset/:token                                  securesocial.controllers.Registration.handleResetPassword(token)
+GET         /password                                      securesocial.controllers.PasswordChange.page
+POST        /password                                      securesocial.controllers.PasswordChange.handlePasswordChange
+GET         /authenticate/:provider                        securesocial.controllers.ProviderController.authenticate(provider)
+POST        /authenticate/:provider                        securesocial.controllers.ProviderController.authenticateByPost(provider)
+GET         /not-authorized                                securesocial.controllers.ProviderController.notAuthorized
+GET         /dashboard                                     controllers.Backoffice.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                                  controllers.Assets.at(path="/public", file)

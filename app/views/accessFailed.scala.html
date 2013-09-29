@@ -1,0 +1,114 @@
+@(message: String, msg:Option[String])
+
+
+@import in.efoundry.utils.EfoundryConfig
+@import scalaz._
+@import Scalaz._
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content="ACELR Website and Information Portal"/>
+        <meta name="author" content="Pawan Kumar, ACELR Tech Labs"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>@message</title>
+        <link rel="stylesheet" media="screen" href="@EfoundryConfig.get_asset_url("stylesheets/bootstrap.min.css",false,1)"/>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")"/>
+        <link rel="stylesheet" media="screen" href="@EfoundryConfig.get_asset_url("stylesheets/sticky-footer-navbar.css",true)"/>
+        <link rel="stylesheet" media="screen" href="@EfoundryConfig.get_asset_url("stylesheets/main.css",true)"/>
+
+            <!-- Placed at the end of the document so the pages load faster -->
+        <script src="@EfoundryConfig.get_asset_url("javascripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+        <script src="@EfoundryConfig.get_asset_url("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+            <!-- Wrap all page content here -->
+        <div id="wrap">
+                <!-- Fixed navbar -->
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="header">
+                        <ul class="nav nav-pills pull-right">
+                            <li><a href="/">HOME</a></li>
+                        </ul>
+                        <h3 class="text-muted"><a href="/"><img src="@routes.Assets.at("images/site/acelr.png")" border="0" alt="ACELR Tech Labs Pvt Ltd"/></a></h3>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Begin page content -->
+            <div class="container" id="main_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger alert-dismissable"><h3>@msg.getOrElse("Oops! Unauthorized Access")</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                        <p class="text-muted credit">&copy;&nbsp;2013 <a href="/">ACELR</a></p>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                        <p></p>
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                        <p class="text-muted credit text-right"><a href="/privacy" target="_blank">Privacy Policy</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        @if(!EfoundryConfig.IS_APP_MODE_PRODUCTION){
+            DEBUG = true
+        }
+        </script>
+
+        @if(EfoundryConfig.USE_ANALYTICS){
+            <script type="text/javascript">
+            //alert(document.domain)
+            var _paq = _paq || [];
+            _paq.push(['setDocumentTitle', document.domain + "/" + document.title]);
+            if(document.domain.toLowerCase().indexOf("acelrtech.in") >= 0){
+            _paq.push(['setCookieDomain','*.www.acelrtech.in']);
+            }
+            else if(document.domain.toLowerCase().indexOf("acelrtechlabs.com") >= 0){
+            _paq.push(['setCookieDomain','*.www.acelrtechlabs.com']);
+            }else {
+            _paq.push(['setCookieDomain','*.www.acelrtech.com']);
+            }
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://cloud.acelrtech.com:30000/piwik/piwik//";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            if(document.domain.toLowerCase().indexOf("acelrtech.in") >= 0){
+            _paq.push(['setSiteId', 3]);
+            var piwik_noscript = $("#piwik_noscript")
+            piwik_noscript.attr("src","http://cloud.acelrtech.com:30000/piwik/piwik/piwik.php?idsite=3&amp;rec=1")
+            }
+            else if(document.domain.toLowerCase().indexOf("acelrtechlabs.com") >= 0){
+            _paq.push(['setSiteId', 1]);
+            var piwik_noscript = $("#piwik_noscript")
+            piwik_noscript.attr("src","http://cloud.acelrtech.com:30000/piwik/piwik/piwik.php?idsite=1&amp;rec=1")
+            }
+            else
+            _paq.push(['setSiteId', 2]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+            g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+
+            </script>
+            <noscript><p><img src="http://cloud.acelrtech.com:30000/piwik/piwik/piwik.php?idsite=2&amp;rec=1" style="border:0" alt="" id="piwik_noscript"/></p></noscript>
+        }
+
+    </body>
+</html>

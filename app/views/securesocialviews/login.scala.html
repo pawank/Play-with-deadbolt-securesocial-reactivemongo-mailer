@@ -1,0 +1,72 @@
+@(loginForm: Form[(String,String)], errorMsg: Option[String] = None)(implicit request: RequestHeader)
+
+@import helper._
+@import securesocial.core.Registry
+@import securesocial.core.AuthenticationMethod._
+@import securesocial.core.providers.UsernamePasswordProvider.UsernamePassword
+
+
+
+@views.html.main(Messages("securesocial.login.title")) {
+    <div class="page-header acelr-m-top-less-10" id="acelr-tagline">
+        <h3 class="acelr-title text-center">
+            @Messages("securesocial.login.title")
+        </h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    @errorMsg.map { msg =>
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="alert alert-danger alert-dismissable"><strong>Oops!</strong>&nbsp;@Messages(msg)</div>
+                            </div>
+                    }
+
+                    @request.flash.get("success").map { msg =>
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-info alert-dismissable"><strong>Wow!</strong>&nbsp;@Messages(msg)</div>
+                        </div>
+                    }
+
+                    @request.flash.get("error").map { msg =>
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger alert-dismissable"><strong>Oops!</strong>&nbsp;@Messages(msg)</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+@defining( Registry.providers.all.values.filter( _.ssId != UsernamePassword) ) { externalProviders =>
+
+        @if( externalProviders.size > 0 ) {
+            <div class="clearfix">
+                <p>@Messages("securesocial.login.instructions")</p>
+                <p>
+                    @for(p <- externalProviders) {
+                        @provider(p.ssId)
+                    }
+                </p>
+            </div>
+        }
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+        @Registry.providers.get(UsernamePassword).map { up =>
+            <div class="clearfix">
+                @if( externalProviders.size > 0 ) {
+                    <p>@Messages("securesocial.login.useEmailAndPassword")</p>
+                } else {
+                    <p>@Messages("securesocial.login.useEmailAndPasswordOnly")</p>
+                }
+               @provider("userpass", Some(loginForm))
+            </div>
+        }
+        </div>
+     </div>
+ </div>
+    }
+}
